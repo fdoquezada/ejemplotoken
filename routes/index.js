@@ -24,5 +24,5 @@ fs
     //ruters.use ("login",requieres(/"./routers/login.js"));
     router.use("/"+path.parse(file).name,require("./"+path.parse(file).base));
   });
-  module.exports=router;
+  module.exports=router
 

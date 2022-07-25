@@ -1,0 +1,17 @@
+.logo{
+    width: 200px
+}
+.form-signin{
+    max-width: 400px;
+    padding:25px;
+}
+.formulario{
+    background-color:white;
+    border: 1px black;
+    border-radius: 5px;
+    box-shadow:5px 5px 15px black;
+
+}
+.gradiente{
+    background: linear-gradient(to right,rgb(58,149,84),rgb(248,249,213));
+}

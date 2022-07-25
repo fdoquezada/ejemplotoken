@@ -1,5 +1,5 @@
 const getLogin=function(req,res){
-    res.renden("login");
+    res.render("login");
 }
 
 const postLogin=function(req,res){

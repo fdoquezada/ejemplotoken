@@ -5,11 +5,11 @@ const morgan= require("morgan");
 
 //configuracion
 const app = express();
-app.use(morgan("start"));
+app.use(morgan("dev"));
 //carpeta de archivos estaticos
-app.use(express.static(__dirname+"public"));
+app.use(express.static("public"));
 //motor de vistas ejs
-app.set("views engine", "ejs");
+app.set("view engine", "ejs");
 //carpeta de las vistas
 app.set("views",__dirname+"/views");
 
