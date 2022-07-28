@@ -1,11 +1,14 @@
-//caragr express/express
-const express = require("express");
+
+//cargar express
+const express=require("express");
 //funciones
-const {getHome}= require("../controllers/home");
-//creamos el router donde
-const router = express.Router();
+const {getHome}=require("../controllers/home")
+const {verificarSesionCookie}=require("../middleware/autenticacion");
+//creamos el router
+const router=express.Router();
 
-//asignar la rutas
-router.get("/",getHome);
 
-module.exports = router
+//asingar la ruta
+router.get("/",verificarSesionCookie,getHome);
+
+module.exports=router

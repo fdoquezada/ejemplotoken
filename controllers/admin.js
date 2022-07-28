@@ -1,4 +1,6 @@
 //funcion GET DE LA RUTA /HOME
-cont getAdmin=function (req.res){
-    res.render
+const getAdmin=function (req,res){
+    res.render("admin",req.datos);
 }
+//exportamos la funcion
+module.exports={getAdmin}

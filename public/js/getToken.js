@@ -1,41 +1,40 @@
-// se ejecuta cuando se carga la pagina
-window.onload = function(e){
-    //carga del formulario de la pagina
+//se ejecuta cuando se carga la página
+window.onload=function(e){
+    //carga del frmulario
     let formulario=document.querySelector("form");
-    //agregar el evento subit al formulario
-    formulario.addEventListener("sumit", async function(e){
+    //agregar el evento submit al formulario
+    formulario.addEventListener("submit",async function(e){
         e.preventDefault();
+        //generar objeto con las credenciales
         let credenciales={
-        // generar objeto por el id 
-        //email:document.getElementById().value
-        // o por el trafico "name"
-        email:formulario.email.value,
-        password:formulario.password.value
-    }
-    //enviar los datos al server comando
-    let respuesta=await fetch("/login",{
-        method: "POST",
-        header:{"content-type":"aplication/json"},
-        body:JSON.stringify(credenciales)
+            //podemos obtenerlo por el id:
+            //email:document.getElementById("floatingInput").value
+            //o por el atributo "name"
+            email:formulario.email.value,
+            password:formulario.password.value
+        }
+        //enviar los datos al server
+        let respuesta=await fetch("/login",{
+            method:"POST",
+            headers:{"Content-type":"application/json"},
+            body:JSON.stringify(credenciales)
+        })        
+        let datos=await respuesta.json();
+        //verificar que existan datos
+        if(!datos){
+            alert("Error: error en la comunicación");
+            return;
+        }
+        //rvisar si hay errores
+        if(datos.error){
+            alert(datos.error);
+            return;
+        }
+        //si todo está OK
+        //paso opcional para cuando trabajen con API RESTful
+        localStorage.setItem("TOKEN_EJERCICIO_JWT",datos.token);
+        //redireccionar al home
+        location.assign("/home");
+
     })
-    //verificar 
-    
-
-let datos =await respuesta.json();
-//verificar que exiten datos al server comando
-if(!datos){
-    alert("Error : en la comunicaion");
-    return;
-
-}
-if(datos.error){
-      alert(datos.error);
-      retun;
-}
-//no hay error en
-//guaqrda el token en la memoria   de chrome o del navegador que usen 
-localStorage.setItem("token_JWT_TEST",datos.token);
-//redirigimos a la pagina principal
-location.assign("/home");
-})
 }

@@ -8,13 +8,16 @@ const getLogin=function(req,res){
 }
 //post  que captura los datos de email y password del formulario de login|
 const postLogin= async function(req,res){
+    //revisa si exite el body
     if(!req.body){
         return res.status(500).json({error:"Error BODY"});
     }
+    //revisa si existe el email
     if (!req.body.email){
         return res.status(500).json({error:"ERROR  MAIL"});
     }
     let usuario;//VIENE DATOS OK
+    //buscar usuario por el mail
     try {
         usuario=await Usuario.findByPk(req.body.email);
     } catch (error) {

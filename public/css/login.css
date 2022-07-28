@@ -1,6 +1,8 @@
+/*para tamaño del log del formulario*/
 .logo{
     width: 200px
 }
+/* para el ancho del formulario*/
 .form-signin{
     max-width: 400px;
     padding:25px;
